@@ -6,6 +6,7 @@
 //
 
 #import "RecursiveModifyDataViewController.h"
+#import "NSObject+Recursive.h"
 
 @interface RecursiveModifyDataViewController ()
 
@@ -15,17 +16,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
 
-/*
-#pragma mark - Navigation
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    NSDictionary *dataDict =
+    @{@"test":@[
+                @{@"word":@"ab",@"wordAudioUrl":@"20201123104801.mp3"},
+                @{@"word":@"ac",@"wordAudioUrl":@"20201123104802.mp3"}
+               ],
+      @"test1":@[
+                  @{@"word":@"ad",@"wordAudioUrl":@"20201123104801.mp3"},
+                  @{@"word":@"ae",@"wordAudioUrl":@"20201123104802.mp3"}
+                 ],
+    };
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSString *directoryPath = @"var/test/directoryPath";
+    // 递归拷贝
+    NSDictionary *newDataDict = [NSObject recursiveWithDict:dataDict modifyBlock:^id _Nonnull(id  _Nonnull object) {
+        if (![object isKindOfClass:[NSString class]])return object;
+
+        // 拼接路径
+        NSString *objectString = (NSString *)object;
+        if ([objectString containsString:@".mp3"] ||
+            [objectString containsString:@".png"] ||
+            [objectString containsString:@".mp4"] ||
+            [objectString containsString:@".jpg"] ||
+            [objectString containsString:@".zip"]){
+
+            object = [directoryPath stringByAppendingString:objectString];
+        }
+
+        return object;
+    }];
+    
+    
+    NSLog(@"oldData:%p,data:%@,newDataDict:%p,newData:%@",dataDict,dataDict,newDataDict,newDataDict);
+    
 }
-*/
 
 @end
