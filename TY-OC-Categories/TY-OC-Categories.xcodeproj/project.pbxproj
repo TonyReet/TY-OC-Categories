@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6AAC345A256B58460041636F /* DeepCopyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAC3459256B58460041636F /* DeepCopyViewController.m */; };
+		6AAC345E256B58590041636F /* RecursiveModifyDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAC345D256B58590041636F /* RecursiveModifyDataViewController.m */; };
+		6AAC3462256B60070041636F /* TYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAC3461256B60070041636F /* TYNavigationController.m */; };
 		6ACC848C2566798E008CA885 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACC848B2566798E008CA885 /* AppDelegate.m */; };
 		6ACC848F2566798E008CA885 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACC848E2566798E008CA885 /* SceneDelegate.m */; };
 		6ACC84922566798E008CA885 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACC84912566798E008CA885 /* ViewController.m */; };
@@ -19,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6AAC3458256B58460041636F /* DeepCopyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepCopyViewController.h; sourceTree = "<group>"; };
+		6AAC3459256B58460041636F /* DeepCopyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeepCopyViewController.m; sourceTree = "<group>"; };
+		6AAC345C256B58590041636F /* RecursiveModifyDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecursiveModifyDataViewController.h; sourceTree = "<group>"; };
+		6AAC345D256B58590041636F /* RecursiveModifyDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecursiveModifyDataViewController.m; sourceTree = "<group>"; };
+		6AAC3460256B60070041636F /* TYNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYNavigationController.h; sourceTree = "<group>"; };
+		6AAC3461256B60070041636F /* TYNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYNavigationController.m; sourceTree = "<group>"; };
 		6ACC84872566798E008CA885 /* TY-OC-Categories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TY-OC-Categories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACC848A2566798E008CA885 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6ACC848B2566798E008CA885 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,6 +83,12 @@
 				6ACC848E2566798E008CA885 /* SceneDelegate.m */,
 				6ACC84902566798E008CA885 /* ViewController.h */,
 				6ACC84912566798E008CA885 /* ViewController.m */,
+				6AAC3460256B60070041636F /* TYNavigationController.h */,
+				6AAC3461256B60070041636F /* TYNavigationController.m */,
+				6AAC3458256B58460041636F /* DeepCopyViewController.h */,
+				6AAC3459256B58460041636F /* DeepCopyViewController.m */,
+				6AAC345C256B58590041636F /* RecursiveModifyDataViewController.h */,
+				6AAC345D256B58590041636F /* RecursiveModifyDataViewController.m */,
 				6ACC84932566798E008CA885 /* Main.storyboard */,
 				6ACC84962566798F008CA885 /* Assets.xcassets */,
 				6ACC84982566798F008CA885 /* LaunchScreen.storyboard */,
@@ -164,11 +179,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6ACC84922566798E008CA885 /* ViewController.m in Sources */,
+				6AAC3462256B60070041636F /* TYNavigationController.m in Sources */,
 				6ACC84A9256679C3008CA885 /* NSObject+Recursive.m in Sources */,
 				6ACC848C2566798E008CA885 /* AppDelegate.m in Sources */,
 				6ACC849D2566798F008CA885 /* main.m in Sources */,
+				6AAC345A256B58460041636F /* DeepCopyViewController.m in Sources */,
 				6ACC84AA256679C3008CA885 /* NSObject+DeepCopy.m in Sources */,
 				6ACC848F2566798E008CA885 /* SceneDelegate.m in Sources */,
+				6AAC345E256B58590041636F /* RecursiveModifyDataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

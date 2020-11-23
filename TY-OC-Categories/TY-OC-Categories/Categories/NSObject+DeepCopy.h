@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSObject (DeepCopy)
 
 /// 深度拷贝dict
--(NSMutableDictionary *)mutableDicDeepCopy:(NSDictionary *)originDict;
++(NSMutableDictionary *)mutableDicDeepCopy:(NSDictionary *)originDict;
 
 /// 深度拷贝arry
--(NSMutableArray *)mutableArrayDeeoCopy:(NSArray *)originArr;
++(NSMutableArray *)mutableArrayDeeoCopy:(NSArray *)originArr;
 
 @end
 

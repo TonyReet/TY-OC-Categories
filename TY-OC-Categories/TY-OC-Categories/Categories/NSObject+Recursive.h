@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 修改字符串
 /// @param dict 需要修改的dict
 /// @param modifyBlock 需要修改的操作
-- (NSDictionary *)recursiveWithDict:(NSDictionary *)dict modifyBlock:(NSObjectRecursiveModifyBlock )modifyBlock;
++ (NSDictionary *)recursiveWithDict:(NSDictionary *)dict modifyBlock:(NSObjectRecursiveModifyBlock )modifyBlock;
 
 @end
 

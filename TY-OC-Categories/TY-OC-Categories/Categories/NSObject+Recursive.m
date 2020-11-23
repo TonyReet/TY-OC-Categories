@@ -26,7 +26,7 @@
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (NSDictionary *)recursiveWithDict:(NSDictionary *)dict modifyBlock:(NSObjectRecursiveModifyBlock )modifyBlock{
++ (NSDictionary *)recursiveWithDict:(NSDictionary *)dict modifyBlock:(NSObjectRecursiveModifyBlock )modifyBlock{
     self.modifyBlock = modifyBlock;
     
     NSMutableDictionary *mutableDict = [self mutableDicDeepCopy:dict];
@@ -37,12 +37,12 @@
     return changeDict;
 }
 
-- (id )processParsedObject:(id)object
++ (id )processParsedObject:(id)object
 {
     return [self processParsedObject:object depth:0 parent:nil];
 }
 
-- (id )processParsedObject:(id)object depth:(int)depth parent:(id)parent
++ (id )processParsedObject:(id)object depth:(int)depth parent:(id)parent
 {
     if ([object isKindOfClass:[NSDictionary class]])
     {

@@ -10,7 +10,7 @@
 
 @implementation NSObject (DeepCopy)
 
--(NSMutableDictionary *)mutableDicDeepCopy:(NSDictionary *)originDict{
++(NSMutableDictionary *)mutableDicDeepCopy:(NSDictionary *)originDict{
     
     NSMutableDictionary *dict=[[NSMutableDictionary alloc] initWithCapacity:[originDict count]];
     
@@ -43,7 +43,7 @@
     
 }
 
--(NSMutableArray *)mutableArrayDeeoCopy:(NSArray *)originArr{
++(NSMutableArray *)mutableArrayDeeoCopy:(NSArray *)originArr{
     
     NSMutableArray * array = [NSMutableArray array];
     [originArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -51,11 +51,11 @@
         id objOject;
         
         if ([obj isKindOfClass:[NSDictionary class]]) {
-            objOject = [obj mutableDicDeepCopy:obj];
+            objOject = [self mutableDicDeepCopy:obj];
             
         }else if ([obj isKindOfClass:[NSArray class]]){
             
-            objOject = [obj mutableArrayDeeoCopy:obj];
+            objOject = [self mutableArrayDeeoCopy:obj];
             
         }else{
             
