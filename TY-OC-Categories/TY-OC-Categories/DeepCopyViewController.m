@@ -6,6 +6,7 @@
 //
 
 #import "DeepCopyViewController.h"
+#import "NSObject+DeepCopy.h"
 
 @interface DeepCopyViewController ()
 
@@ -15,17 +16,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    NSDictionary *dataDict =
+    @{@"test":@[
+                @{@"word":@"ab",@"wordAudioUrl":@"20201123104801.mp3"},
+                @{@"word":@"ac",@"wordAudioUrl":@"20201123104802.mp3"}
+               ],
+      @"test1":@[
+                  @{@"word":@"ad",@"wordAudioUrl":@"20201123104801.mp3"},
+                  @{@"word":@"ae",@"wordAudioUrl":@"20201123104802.mp3"}
+                 ],
+    };
+
+    // 递归拷贝
+    NSDictionary *newDataDict = [NSObject mutableDicDeepCopy:dataDict.mutableCopy];
+    
+    
+    NSLog(@"oldData:%p,data:%@,newDataDict:%p,newData:%@",dataDict,dataDict,newDataDict,newDataDict);
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
