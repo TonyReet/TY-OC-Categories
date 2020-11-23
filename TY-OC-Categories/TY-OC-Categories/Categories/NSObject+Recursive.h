@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef _Nonnull id(^NSObjectRecursiveModifyBlock)(_Nonnull id object);
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (Recursive)
 
-/// 递归添加特定字符串
-/// @param addString 字符串
-/// @param dict 需要添加的dict
-- (NSDictionary *)recursiveAddString:(NSString *)addString dict:(NSDictionary *)dict;
+/// 修改字符串
+/// @param dict 需要修改的dict
+/// @param modifyBlock 需要修改的操作
+- (NSDictionary *)recursiveWithDict:(NSDictionary *)dict modifyBlock:(NSObjectRecursiveModifyBlock )modifyBlock;
 
 @end
 

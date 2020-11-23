@@ -12,33 +12,30 @@
 
 @interface NSObject ()
 
-// 添加的字符串前缀
-@property (nonatomic, copy, nullable) NSString *addPrefixString;
+@property (nonatomic, copy, nullable) NSObjectRecursiveModifyBlock modifyBlock;
 
 @end
 
 @implementation NSObject (Recursive)
 
-- (void)setAddPrefixString:(NSString *)addPrefixString{
-    objc_setAssociatedObject(self, @selector(addPrefixString), addPrefixString, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setModifyBlock:(id (^)(id))modifyBlock{
+    objc_setAssociatedObject(self, @selector(modifyBlock), modifyBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (NSString *)addPrefixString{
+- (id (^)(id))modifyBlock{
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (NSDictionary *)recursiveAddString:(NSString *)addString dict:(NSDictionary *)dict{
-    self.addPrefixString = addString;
+- (NSDictionary *)recursiveWithDict:(NSDictionary *)dict modifyBlock:(NSObjectRecursiveModifyBlock )modifyBlock{
+    self.modifyBlock = modifyBlock;
     
     NSMutableDictionary *mutableDict = [self mutableDicDeepCopy:dict];
     NSDictionary *changeDict = [self processParsedObject:mutableDict];
     
-    self.addPrefixString = nil;
+    self.modifyBlock = nil;
     
     return changeDict;
 }
-
-
 
 - (id )processParsedObject:(id)object
 {
@@ -63,21 +60,12 @@
             [self processParsedObject:child depth:(depth + 1) parent:object];
         }
     }
-    else if ([object isKindOfClass:[NSString class]])
-    {
-        
-        // 拼接路径
-        NSString *objectString = (NSString *)object;
-        if ([objectString containsString:@".mp3"] ||
-            [objectString containsString:@".png"] ||
-            [objectString containsString:@".mp4"] ||
-            [objectString containsString:@".jpg"]){
-            object = [self.addPrefixString stringByAppendingString:objectString];
+    else{
+        if (self.modifyBlock){
+            return self.modifyBlock(object);
+        }else{
+            NSLog(@"object:%@",[object description]);
         }
-    }
-    else
-    {
-        NSLog(@"object:%@",[object description]);
     }
     
     return object;
