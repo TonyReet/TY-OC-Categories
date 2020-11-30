@@ -55,10 +55,13 @@
     }
     else if ([object isKindOfClass:[NSArray class]])
     {
+        NSMutableArray *arr = [NSMutableArray new];
         for (id child in object)
         {
-            [self processParsedObject:child depth:(depth + 1) parent:object];
+            [arr addObject:[self processParsedObject:child depth:(depth + 1) parent:object]];
         }
+        
+        object = arr;
     }
     else{
         if (self.modifyBlock){
